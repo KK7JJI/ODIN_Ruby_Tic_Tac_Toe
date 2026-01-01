@@ -1,6 +1,6 @@
 module TicTacToe
   class PlayMatch
-    include TicTacToe::DisplayGame
+    include TicTacToe::TTTHelp
 
     def self.call(game, cur_match)
       new().call(game, cur_match)
@@ -9,11 +9,16 @@ module TicTacToe
     def call(game, cur_match)
 
       cur_match.display_match_start_message()
+      display_sample_TTT_board()
+      display_current_board(cur_match.board)
+
       while true
         cur_match.increment_round_counter()
         puts ""
         puts "Round #{cur_match.match_round_counter}"
         puts ""
+        display_sample_TTT_board()
+        display_current_board(cur_match.board)
         game.players.each do |player|
           cur_match.increment_turn_counter()
           TicTacToe::PlayerToken.add_token(player)
@@ -26,7 +31,7 @@ module TicTacToe
           end
 
           TicTacToe::PlaceNewToken.call(player, cur_pos)
-          print_board(cur_match.board)
+          display_current_board(cur_match.board)
           TicTacToe::UpdateMatchStatus.call(cur_match, cur_pos, player)
           break if cur_match.match_ended?()
         end

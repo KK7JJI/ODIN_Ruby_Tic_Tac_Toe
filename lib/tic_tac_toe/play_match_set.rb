@@ -1,12 +1,6 @@
-# A set is a collection of matches played.  A player wins by winning a
-# simple majority of matches in a match (not including draws).
-# player 1: 1
-# player 2: 0
-#     draw: 4
-#
-# player 1 wins.
 module TicTacToe
   class PlayMatchSet
+    include TicTacToe::TTTHelp
 
     def self.call(game)
       new().call(game)

@@ -4,6 +4,7 @@
 # lib/my_project.rb
 
 require_relative "tic_tac_toe/display_game"
+require_relative "tic_tac_toe/ttt_help"
 require_relative "tic_tac_toe/setup_new_game"
 require_relative "tic_tac_toe/play_match_set"
 require_relative "tic_tac_toe/get_player_input"
@@ -17,8 +18,6 @@ require_relative "tic_tac_toe/place_new_token"
 require_relative "tic_tac_toe/match"
 require_relative "tic_tac_toe/update_match_status"
 require_relative "tic_tac_toe/app"
-
-require_relative "tic_tac_toe/messages"
 require_relative "tic_tac_toe/player_token"
 require_relative "tic_tac_toe/version"
 

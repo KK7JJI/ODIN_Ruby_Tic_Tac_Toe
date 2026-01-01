@@ -1,5 +1,7 @@
 module TicTacToe
   class SetupNewGame
+    include TicTacToe::TTTHelp
+
     def self.call(new_game, arg=nil)
       if arg == "--showoptions"
         new().manualsetup(new_game)
@@ -21,10 +23,12 @@ module TicTacToe
     end
 
     def manualsetup(new_game)
-      get_number_of_matches()
+      display_setup_help_message()
 
+      get_number_of_matches()
       get_player_name(@player1)
       get_token_name(@player1)
+      puts ""
       get_player_name(@player2)
       get_token_name(@player2)
 
@@ -43,11 +47,11 @@ module TicTacToe
         num = STDIN.gets.chomp.to_i
         print "enter a number: " if num < 1
       end
+
       @match_count = num
     end
 
     def get_player_name(player)
-
       print "#{player["name"]} Name (enter = computer):"
       name = STDIN.gets.chomp
       if name.length == 0
@@ -76,7 +80,6 @@ module TicTacToe
         @player2["name"],@player2["token"],@player2["computer"]))
 
     end
-
 
   end
 end

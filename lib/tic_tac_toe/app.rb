@@ -3,10 +3,10 @@ module TicTacToe
   class App
 
     def run(args)
-      puts "::App.run Running with arguments: #{args.inspect}"
+      # puts "::App.run Running with arguments: #{args.inspect}"
 
       if args.length == 0
-        arg = 1
+        arg = "--showoptions"
       else
         arg = args[0]
       end

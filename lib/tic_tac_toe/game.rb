@@ -10,8 +10,9 @@
 #
 
 module TicTacToe
-
   class Game
+    include TicTacToe::TTTHelp
+
     attr_reader :players
     attr_accessor :matches, :number_of_matches
 
@@ -39,6 +40,7 @@ module TicTacToe
     end
 
     def display_game_opening_msg()
+      display
       puts ""
       puts "------------------------------"
       puts "Starting New Game, Tic Tac Toe"
@@ -49,6 +51,7 @@ module TicTacToe
       player2 = "Computer" if players[1].computer_player
       puts "#{player1} vs. #{player2}"
       puts ""
+      display_match_help_message()
     end
 
     def display_player_stats()
