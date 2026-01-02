@@ -6,6 +6,7 @@ module TicTacToe
   # by match summary.
   class PlayMatchSet
     include TicTacToe::TTTHelp
+    include TicTacToe::MatchEndMessages
 
     def self.call(game)
       new.call(game)
@@ -28,34 +29,6 @@ module TicTacToe
 
       display_matchset_summary(game)
       list_match_wins(game)
-    end
-
-    def display_matchset_summary(game)
-      puts ''
-      puts '====================================='
-      puts 'GAME OVER, Set Summary'
-      puts '====================================='
-      game.players.each do |player|
-        puts "#{player.player_name}: #{player.player_wins} wins."
-      end
-
-      draw = game.players.each_cons(2).all? do |left, right|
-        left.player_wins == right.player_wins
-      end
-
-      puts '====================================='
-      if draw
-        msg = 'TIE GAME!'
-      else
-        winner = game.players.reduce do |winner, player|
-          winner = player if player.player_wins > winner.player_wins
-          winner
-        end
-        msg = "#{winner.player_name} wins."
-      end
-
-      puts msg
-      puts ''
     end
 
     def list_match_wins(game)
