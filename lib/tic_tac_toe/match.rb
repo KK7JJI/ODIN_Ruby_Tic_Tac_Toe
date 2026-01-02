@@ -5,8 +5,8 @@ module TicTacToe
   # one player gets 3 in a row or the board is full.
   class Match
     @@match_count = 0
-    attr_accessor :winner, :board, :match_end_status, :match_end_msg, :match_round_counter, :turn_counter,
-                  :match_counter
+    attr_accessor :winner, :board, :match_end_status, :match_end_msg,
+                  :match_round_counter, :turn_counter, :match_counter
 
     def self.new_match
       @@match_count += 1

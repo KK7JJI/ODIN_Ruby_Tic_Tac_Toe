@@ -5,26 +5,22 @@ module TicTacToe
   # have been met to end the current match.
   # 3 in a row or the board is full of tokens.
   class UpdateMatchStatus
+    include TicTacToe::MatchEndHandler
+
     def self.call(cur_match, cur_pos, cur_player)
       new.call(cur_match, cur_pos, cur_player)
     end
 
     def call(cur_match, cur_pos, cur_player)
-      if player_wins_ttt_match?(cur_pos, cur_match)
-        cur_match.update_match_status(
-          true, "Match ends, #{cur_player.player_name} wins."
-        )
-        cur_match.winner = cur_player
-        cur_player.add_match_win
-      elsif ttt_board_is_full?(cur_match)
-        cur_match.update_match_status(
-          true, 'Match ends, Tie Game.'
-        )
-      else
-        cur_match.update_match_status(
-          false, 'Ready for next move.'
-        )
-      end
+      outcome = determine_match_status(cur_match, cur_pos)
+      MATCH_END_HANDLERS[outcome].call(cur_match, cur_player)
+    end
+
+    def determine_match_status(cur_match, cur_pos)
+      return :win if player_wins_ttt_match?(cur_pos, cur_match)
+      return :draw if ttt_board_is_full?(cur_match)
+
+      :continue
     end
 
     def ttt_board_is_full?(cur_match)

@@ -5,13 +5,13 @@ module TicTacToe
   # the last player token is the newest which was recently
   # created but not yet positioned.
   class PlaceNewToken
-    def self.call(cur_player, this_position)
-      new.call(cur_player, this_position)
+    def self.call(cur_player, pos)
+      new.call(cur_player, pos)
     end
 
-    def call(cur_player, this_position)
-      this_position.player_token = cur_player.player_tokens[-1]
-      cur_player.player_tokens[-1].position = this_position
+    def call(cur_player, pos)
+      pos.player_token = cur_player.player_tokens[-1]
+      cur_player.player_tokens[-1].position = pos
     end
   end
 end

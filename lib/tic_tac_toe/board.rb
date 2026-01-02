@@ -24,6 +24,14 @@ module TicTacToe
       self
     end
 
+    def rows
+      [0, 3, 6].map do |start|
+        (start...(start + 3)).map do |i|
+          get_ttt_token_disp_name(i)
+        end
+      end
+    end
+
     def get_ttt_token_disp_name(board_pos)
       # position_location is a number 0 - 8
       this_token = @ttt_board[board_pos].player_token

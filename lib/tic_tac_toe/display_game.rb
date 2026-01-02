@@ -20,36 +20,22 @@ module TicTacToe
 
     def print_board(game_board)
       top_row
-      row_data = [
-        game_board.get_ttt_token_disp_name(0),
-        game_board.get_ttt_token_disp_name(1),
-        game_board.get_ttt_token_disp_name(2)
-      ]
-      mizzen_row(row_data[0], row_data[1], row_data[2])
+      board_tokens = game_board.rows
+      mizzen_row(board_tokens[0])
       center_row
-      row_data = [
-        game_board.get_ttt_token_disp_name(3),
-        game_board.get_ttt_token_disp_name(4),
-        game_board.get_ttt_token_disp_name(5)
-      ]
-      mizzen_row(row_data[0], row_data[1], row_data[2])
+      mizzen_row(board_tokens[1])
       center_row
-      row_data = [
-        game_board.get_ttt_token_disp_name(6),
-        game_board.get_ttt_token_disp_name(7),
-        game_board.get_ttt_token_disp_name(8)
-      ]
-      mizzen_row(row_data[0], row_data[1], row_data[2])
+      mizzen_row(board_tokens[2])
       bottom_row
     end
 
     def print_board_positions
       top_row
-      mizzen_row('0', '1', '2')
+      mizzen_row(%w[0 1 2])
       center_row
-      mizzen_row('3', '4', '5')
+      mizzen_row(%w[3 4 5])
       center_row
-      mizzen_row('6', '7', '8')
+      mizzen_row(%w[6 7 8])
       bottom_row
     end
 
@@ -66,16 +52,13 @@ module TicTacToe
       puts top_row.join
     end
 
-    def mizzen_row(pos1, pos2, pos3)
-      mizzen_row = [
-        LIGHT_BOX_CHARS[:vertical],
-        pos1.to_s,
-        LIGHT_BOX_CHARS[:vertical],
-        pos2.to_s,
-        LIGHT_BOX_CHARS[:vertical],
-        pos3.to_s,
-        LIGHT_BOX_CHARS[:vertical]
-      ]
+    def mizzen_row(board_tokens)
+      mizzen_row = []
+      board_tokens.each do |token|
+        mizzen_row.push(LIGHT_BOX_CHARS[:vertical])
+        mizzen_row.push(token)
+      end
+      mizzen_row.push(LIGHT_BOX_CHARS[:vertical])
       puts mizzen_row.join
     end
 
