@@ -7,6 +7,7 @@ module TicTacToe
   class PlayMatchSet
     include TicTacToe::TTTHelp
     include TicTacToe::MatchEndMessages
+    include TicTacToe::SetEndMessages
 
     def self.call(game)
       new.call(game)
@@ -29,27 +30,6 @@ module TicTacToe
 
       display_matchset_summary(game)
       list_match_wins(game)
-    end
-
-    def list_match_wins(game)
-      puts 'Match Summary:'
-      puts '====================================='
-
-      played_matches = []
-      game.matches.each do |match|
-        player_name = if match.winner.nil?
-                        'Tie Game'
-                      else
-                        match.winner.player_name
-                      end
-        played_matches.push([match.match_counter, player_name])
-      end
-
-      played_matches.each do |match|
-        puts "Match number: #{match[0]} => #{match[1]}"
-      end
-      puts '====================================='
-      puts ''
     end
   end
 end

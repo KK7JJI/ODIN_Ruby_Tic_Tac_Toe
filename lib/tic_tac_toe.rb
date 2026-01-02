@@ -5,7 +5,11 @@
 #
 # lib/my_project.rb
 
+require_relative 'tic_tac_toe/match_end_handler'
+require_relative 'tic_tac_toe/match_end_messages'
+require_relative 'tic_tac_toe/set_end_messages'
 require_relative 'tic_tac_toe/display_game'
+require_relative 'tic_tac_toe/player_position_select'
 require_relative 'tic_tac_toe/ttt_help'
 require_relative 'tic_tac_toe/setup_new_game'
 require_relative 'tic_tac_toe/play_match_set'
