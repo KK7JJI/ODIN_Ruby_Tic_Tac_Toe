@@ -38,7 +38,7 @@ module TicTacToe
         get_token_name(player)
         puts ''
         new_game.players.push(TicTacToe::Player.add_player(
-                                player['name'], player['token'], player['computer']
+                                player['name'], player['token'], computer_player: player['computer']
                               ))
       end
     end
@@ -75,7 +75,8 @@ module TicTacToe
     def autosetup(new_game)
       players.each do |player|
         new_game.players.push(TicTacToe::Player.add_player(
-                                player['name'], player['token'], player['computer']
+                                player['name'], player['token'],
+                                computer_player: player['computer']
                               ))
       end
     end

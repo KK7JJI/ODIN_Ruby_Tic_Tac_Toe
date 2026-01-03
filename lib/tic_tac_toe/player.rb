@@ -8,7 +8,7 @@ module TicTacToe
     attr_reader :player_name, :default_token_name, :computer_player
 
     def self.add_player(player_name, default_token_name,
-                        computer_player = false)
+                        computer_player: false)
       new(player_name, default_token_name, computer_player).call
     end
 
