@@ -4,26 +4,34 @@
 module TicTacToe
   # entry point for the Bash script executable.
   class App
+    STARTUP_OPTION_HANDLER = {
+      manual_setup: lambda do |game, _|
+        TicTacToe::SetupNewGame.call(game, '--manual_setup')
+      end,
+      automated_setup: lambda do |game, arg|
+        game.number_of_matches = arg.to_i
+        TicTacToe::SetupNewGame.call(game, '--automated_setup')
+      end
+    }.freeze
+
     def run(args)
       # puts "::App.run Running with arguments: #{args.inspect}"
 
       arg = if args.empty?
-              '--showoptions'
+              '--manual_setup'
             else
               args[0]
             end
 
-      if arg == '--showoptions'
-        game = TicTacToe::Game.new_game
-        TicTacToe::SetupNewGame.call(game, arg)
-      else
-        arg = arg.to_i
-        game = TicTacToe::Game.new_game(arg)
-        TicTacToe::SetupNewGame.call(game)
-      end
-
-      game.display_game_opening_msg
+      game = TicTacToe::Game.new_game
+      STARTUP_OPTION_HANDLER[setup_type(arg)].call(game, arg)
       TicTacToe::PlayMatchSet.call(game)
+    end
+
+    def setup_type(arg)
+      return :automated_setup unless arg == '--manual_setup'
+
+      :manual_setup
     end
   end
 end

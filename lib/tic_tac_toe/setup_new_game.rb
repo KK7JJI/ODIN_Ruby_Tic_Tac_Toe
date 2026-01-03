@@ -10,11 +10,12 @@ module TicTacToe
     attr_accessor :players
 
     def self.call(new_game, arg = nil)
-      if arg == '--showoptions'
+      if arg == '--manual_setup'
         new.manualsetup(new_game)
       else
         new.autosetup(new_game)
       end
+      new_game.display_game_opening_msg
     end
 
     def initialize
@@ -72,12 +73,11 @@ module TicTacToe
     end
 
     def autosetup(new_game)
-      new_game.players.push(TicTacToe::Player.add_player(
-                              @player1['name'], @player1['token'], @player1['computer']
-                            ))
-      new_game.players.push(TicTacToe::Player.add_player(
-                              @player2['name'], @player2['token'], @player2['computer']
-                            ))
+      players.each do |player|
+        new_game.players.push(TicTacToe::Player.add_player(
+                                player['name'], player['token'], player['computer']
+                              ))
+      end
     end
   end
 end
