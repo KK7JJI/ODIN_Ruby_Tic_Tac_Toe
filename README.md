@@ -25,10 +25,8 @@ From the /bin directory in the project. \
 
 valid args include:
 
-```--manual_setup  - game presents options for player names, preferred tokens,
-and number of matches to be played.```\
-``` -n              - n = number of matches to be played.  Setup defaults to 1
-human and 1 computer player, player 1 and player 2 respectively.```
+```--manual_setup  - game presents options for player names, preferred tokens, and number of matches to be played.```
+``` -n              - n = number of matches to be played.  Setup defaults to 1 human and 1 computer player, player 1 and player 2 respectively.```
 
 If no argument is given manual game setup is assumed.
 
