@@ -25,6 +25,7 @@ module TicTacToe
     end
 
     def call(board, player_name)
+      val = -1
       loop do
         print "#{player_name}: "
         val = $stdin.gets.chomp

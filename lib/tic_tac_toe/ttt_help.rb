@@ -5,16 +5,37 @@ module TicTacToe
   module TTTHelp
     include TicTacToe::DisplayGame
 
+    SETUP_HELP_MESSAGE = <<~SETUPHELP
+      ---------------------------------------------
+      Player Setup:
+       Enter a name for each human player
+       Leave the name field blank for computer players
+
+       Player token names will default to X and O
+       unless a alternative value is entered.
+       Tokens may only be 1 character in length.
+
+       A match may consist of 1 to N
+       individual tic tac toe games
+       enter a number to set the match.
+      ---------------------------------------------
+
+    SETUPHELP
+
+    MATCH_HELP_MESSAGE = <<~MATCHHELP
+      ---------------------------------------------
+      The tic tac toe board cells are numbered from
+      0 - 8 starting at the top left, ending in the
+      bottom right ordered left to right and top to
+      bottom.
+
+      Select a cell by entering a number 0 - 8.
+      ---------------------------------------------'
+
+    MATCHHELP
+
     def display_match_help_message
-      puts '---------------------------------------------'
-      puts 'The tic tac toe board cells are numbered from'
-      puts '0 - 8 starting at the top left, ending in the'
-      puts 'bottom right ordered left to right and top to'
-      puts 'bottom.'
-      puts ''
-      puts 'Select a cell by entering a number 0 - 8.'
-      puts '---------------------------------------------'
-      puts ''
+      puts MATCH_HELP_MESSAGE
     end
 
     def display_sample_ttt_board
@@ -28,20 +49,7 @@ module TicTacToe
     end
 
     def display_setup_help_message
-      puts '---------------------------------------------'
-      puts 'Player Setup:'
-      puts ' Enter a name for each human player'
-      puts ' Leave the name field blank for computer players'
-      puts ''
-      puts ' Player token names will default to X and O'
-      puts ' unless a alternative value is entered.'
-      puts ' Tokens may only be 1 character in length.'
-      puts ''
-      puts ' A match may consist of 1 to N'
-      puts ' individual tic tac toe games'
-      puts ' enter a number to set the match.'
-      puts '---------------------------------------------'
-      puts ''
+      puts SETUP_HELP_MESSAGE
     end
   end
 end
