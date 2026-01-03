@@ -9,7 +9,7 @@ module TicTacToe
         TicTacToe::SetupNewGame.call(game, '--manual_setup')
       end,
       automated_setup: lambda do |game, arg|
-        game.number_of_matches = arg.to_i
+        game.number_of_matches = arg.to_i.abs
         TicTacToe::SetupNewGame.call(game, '--automated_setup')
       end
     }.freeze
