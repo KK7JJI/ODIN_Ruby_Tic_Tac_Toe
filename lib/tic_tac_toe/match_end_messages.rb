@@ -41,5 +41,14 @@ module TicTacToe
       end
       "#{winner.player_name} wins."
     end
+
+    def display_player_stats(players)
+      puts 'Player scores as follows:'
+      puts '==========================='
+      players.each do |player|
+        puts "#{player.player_name}: #{player.player_wins} wins."
+      end
+      puts ''
+    end
   end
 end

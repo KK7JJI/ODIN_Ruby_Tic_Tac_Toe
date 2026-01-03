@@ -19,17 +19,21 @@ module TicTacToe
 
     def call(game)
       while game.matches.length < game.number_of_matches
-
-        game.matches.push(TicTacToe::Match.new_match)
-        game.current_match.board = TicTacToe::Board.add_ttt_board
-        cur_match = game.current_match
+        cur_match = add_new_match(game)
         TicTacToe::PlayMatch.call(game, cur_match)
-        game.display_player_stats
+        display_player_stats(game.players)
 
       end
 
       display_matchset_summary(game)
       list_match_wins(game)
+    end
+
+    def add_new_match(game)
+      puts game.matches.length + 1
+      game.matches.push(TicTacToe::Match.new_match(game.matches.length + 1))
+      game.current_match.board = TicTacToe::Board.add_ttt_board
+      game.current_match
     end
   end
 end

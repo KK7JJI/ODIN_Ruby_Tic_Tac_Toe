@@ -48,14 +48,5 @@ module TicTacToe
       player2 = 'Computer' if players[1].computer_player
       puts "#{player1} vs. #{player2}"
     end
-
-    def display_player_stats
-      puts 'Player scores as follows:'
-      puts '==========================='
-      players.each do |player|
-        puts "#{player.player_name}: #{player.player_wins} wins."
-      end
-      puts ''
-    end
   end
 end

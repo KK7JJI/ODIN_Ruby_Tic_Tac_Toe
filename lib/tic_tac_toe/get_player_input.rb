@@ -9,7 +9,6 @@ module TicTacToe
       valid_input: lambda do
         true
       end,
-
       cell_occupied: lambda do
         puts 'This cell is occupied, try another.'
         false

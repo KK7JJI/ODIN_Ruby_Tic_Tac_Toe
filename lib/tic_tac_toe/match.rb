@@ -4,23 +4,21 @@ module TicTacToe
   # A match is played between two players until either
   # one player gets 3 in a row or the board is full.
   class Match
-    @@match_count = 0
     attr_accessor :winner, :board, :match_end_status, :match_end_msg,
                   :match_round_counter, :turn_counter, :match_counter
 
-    def self.new_match
-      @@match_count += 1
-      new.call
+    def self.new_match(match_count)
+      new(match_count).call
     end
 
-    def initialize
+    def initialize(match_count)
       @board = nil
       @winner = nil
       @match_end_status = false
       @match_end_msg = ''
       @turn_counter = 0
       @match_round_counter = 0
-      @match_counter = @@match_count
+      @match_counter = match_count
     end
 
     def call
@@ -48,7 +46,7 @@ module TicTacToe
 
     def display_match_start_message
       puts '====================================='
-      puts "BEGIN MATCH: #{@@match_count}"
+      puts "BEGIN MATCH: #{@match_counter}"
       puts '====================================='
       puts ''
     end
@@ -56,10 +54,10 @@ module TicTacToe
     def display_match_end_message
       puts ''
       puts '====================================='
-      puts "MATCH: #{@@match_count}"
+      puts "MATCH: #{@match_counter}"
       puts '====================================='
       puts "msg: '#{match_end_msg}'"
-      print "match #{@@match_count} ended after "
+      print "match #{@match_counter} ended after "
       puts  "#{match_round_counter} rounds of play."
       puts ''
     end
