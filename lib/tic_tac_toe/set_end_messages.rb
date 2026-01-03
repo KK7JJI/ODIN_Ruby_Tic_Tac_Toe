@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TicTacToe
   # messages displayed after a set of matches have
   # been played detailing individual match outcomes.
