@@ -24,7 +24,7 @@ module TicTacToe
           'computer' => false,
           'token' => 'X' },
         { 'name' => 'Player 2',
-          'computer' => false,
+          'computer' => true,
           'token' => 'O' }
       ]
       @match_count = 2
