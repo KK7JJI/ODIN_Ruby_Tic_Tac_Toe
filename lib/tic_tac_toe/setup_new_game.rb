@@ -7,6 +7,8 @@ module TicTacToe
   class SetupNewGame
     include TicTacToe::TTTHelp
 
+    attr_accessor :players
+
     def self.call(new_game, arg = nil)
       if arg == '--showoptions'
         new.manualsetup(new_game)
@@ -16,44 +18,38 @@ module TicTacToe
     end
 
     def initialize
-      @player1 = { 'name' => 'Player 1',
-                   'computer' => false,
-                   'token' => 'X' }
-      @player2 = { 'name' => 'Player 2',
-                   'computer' => false,
-                   'token' => 'O' }
+      @players = [
+        { 'name' => 'Player 1',
+          'computer' => false,
+          'token' => 'X' },
+        { 'name' => 'Player 2',
+          'computer' => false,
+          'token' => 'O' }
+      ]
       @match_count = 2
     end
 
     def manualsetup(new_game)
       display_setup_help_message
-
-      number_of_matches
-      get_player_name(@player1)
-      get_token_name(@player1)
-      puts ''
-      get_player_name(@player2)
-      get_token_name(@player2)
-
-      new_game.players.push(TicTacToe::Player.add_player(
-                              @player1['name'], @player1['token'], @player1['computer']
-                            ))
-      new_game.players.push(TicTacToe::Player.add_player(
-                              @player2['name'], @player2['token'], @player2['computer']
-                            ))
-
-      new_game.number_of_matches = @match_count
+      number_of_matches(new_game)
+      players.each do |player|
+        get_player_name(player)
+        get_token_name(player)
+        puts ''
+        new_game.players.push(TicTacToe::Player.add_player(
+                                player['name'], player['token'], player['computer']
+                              ))
+      end
     end
 
-    def number_of_matches
+    def number_of_matches(new_game)
       num = -1
       print 'How many matches should we play (number)?: '
       while num < 1
         num = $stdin.gets.chomp.to_i
         print 'enter a number: ' if num < 1
       end
-
-      @match_count = num
+      new_game.number_of_matches = num
     end
 
     def get_player_name(player)
