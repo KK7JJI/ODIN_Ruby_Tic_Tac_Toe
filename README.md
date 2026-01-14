@@ -1,9 +1,6 @@
 # ODIN_Ruby_Tic_Tac_Toe
 TOP Ruby Project: Tic Tac Toe
 
-# ODIN_Ruby_Tic_Tac_Toe
-## TOP Ruby Project: Tic Tac Toe
-
 ### Setup notes:
 First clone this repository.
 To run the application navigate to the /bin directory of the project and make
