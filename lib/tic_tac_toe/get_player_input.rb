@@ -38,7 +38,7 @@ module TicTacToe
     end
 
     def validate_input(board, val)
-      valid_nums = /[0-8]/
+      valid_nums = /^[0-8]/
 
       if valid_nums.match?(val)
         return :cell_occupied if board.get_ttt_token_disp_name(val.to_i) != ' '
